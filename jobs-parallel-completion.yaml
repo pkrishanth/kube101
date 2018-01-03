@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kungfu-panda
+spec:
+  parallelism: 5
+  completions: 10
+  template:
+    metadata:
+      name: kungfu-panda
+    spec:
+      containers:
+      - name: jobs-parallel-completion
+        image: busybox
+        args:
+        - /bin/sh
+        - -c
+        - echo Hello !, I am kung-fu panda
+      restartPolicy: OnFailure
+ 
