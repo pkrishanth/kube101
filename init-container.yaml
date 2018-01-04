@@ -1,0 +1,27 @@
+# Run kubectl exec -it init-demo -- /bin/bash to check the test.txt
+apiVersion: v1
+kind: Pod
+metadata:
+  name: init-demo
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.13
+    volumeMounts:
+    - name: path
+      mountPath: /tmp/init
+  initContainers:
+  - name: busybox-init
+    image: busybox
+    command:
+    - /bin/sh
+    - "-c"
+    - "touch /tmp/init/test.txt"
+    volumeMounts:
+    - name: path
+      mountPath: "/tmp/init" 
+  volumes:
+  - name: path
+    emptyDir: {}
+
+
