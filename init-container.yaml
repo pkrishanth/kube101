@@ -15,8 +15,8 @@ spec:
     image: busybox
     command:
     - /bin/sh
-    - "-c"
-    - "touch /tmp/init/test.txt"
+    - -c
+    - touch /tmp/init/test.txt
     volumeMounts:
     - name: path
       mountPath: "/tmp/init" 

@@ -12,7 +12,7 @@ spec:
       containers:
       - name: jobs-parallel-completion
         image: busybox
-        args:
+        command:
         - /bin/sh
         - -c
         - echo Hello !, I am kung-fu panda
