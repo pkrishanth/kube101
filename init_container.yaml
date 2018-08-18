@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis
+  namespace: default
+spec:
+  containers:
+  - image: nginx
+    name: nginx
+    volumeMounts:
+    - mountPath: /tmp/test
+      name: path
+  initContainers:   
+  - name: init-myservice     
+    image: busybox     
+    command: ['sh', '-c', 'touch /tmp/test/test.txt']
+    volumeMounts:
+    - mountPath: /tmp/test
+      name: path
+  volumes:
+  - emptyDir: {}
+    name: path

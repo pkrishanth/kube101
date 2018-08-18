@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job-wq-1
+  namespace: cka
+spec:
+  completions: 20
+  parallelism: 5
+  template:
+    metadata:
+      name: job-wq-1
+    spec:
+      containers:
+      - name: busybox-job
+        image: busybox
+      restartPolicy: OnFailure

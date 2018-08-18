@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: ngnix
+  name: ngnix
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: ngnix
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: ngnix
+    spec:
+      containers:
+      - image: ngnix
+        name: ngnix
+        resources: {}
+      nodeSelector:
+        disktype: ssd
+status: {}
